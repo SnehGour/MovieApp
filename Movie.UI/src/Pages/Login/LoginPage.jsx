@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Paper, Typography, TextField, Button, Grid } from '@mui/material';
 import { login } from '../../API/api';
-import { Navigate, Redirect } from 'react-router-dom';
+import { Link, Navigate, Redirect, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/authContext'
 
 const LoginPage = () => {
-
-  const [isLoggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const auth = useContext(AuthContext)
 
-  useEffect(()=>{
-
-  },[isLoggedIn])
+  console.log('auth',auth)
 
 
   const handleEmailChange = (event) => {
@@ -26,21 +24,19 @@ const LoginPage = () => {
     event.preventDefault();
     // Add login logic here
 
-    login(email, password).then(response=>{
-      console.log('response',response)
-      if(response.data.isSuccess){
-        setLoggedIn(true);
+    login(email, password).then(response => {
+      console.log('response', response)
+      if (response.data.isSuccess) {
+        auth.setIsLogin(true);
         const token = response.data.result.token;
         localStorage.setItem('token', token);
+
       }
     });
-  
-    
-
   };
 
-  if (isLoggedIn) {
-    return <Navigate to="/" />;
+  if (auth.isLogin) {
+    return (<Navigate to="/" />)
   }
 
   return (
@@ -77,6 +73,11 @@ const LoginPage = () => {
             >
               Login
             </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body1" align="center">
+              Don't have an account? <Link to="/register">Register</Link>
+            </Typography>
           </Grid>
         </Grid>
       </form>

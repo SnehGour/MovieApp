@@ -15,8 +15,8 @@ const MovieCard = ({ movie }) => {
 
     const handleClick = () => {
         // Add logic for handling the click event
-        console.log('Card clicked:', movie.title);
-        navigate(`/movie`);
+        console.log('Card clicked:', movie.id);
+        navigate(`/movie/${movie.id}`);
     };
     return (
         <ButtonBase onClick={handleClick}>

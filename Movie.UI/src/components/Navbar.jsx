@@ -1,19 +1,23 @@
 // Navbar.js
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AppBar, Button, IconButton, Toolbar, Tooltip, Typography } from '@mui/material';
 import { Link, Navigate } from 'react-router-dom';
-
+import {doLogin,doLogout,isLoggedIn} from '../Auth/index'
 // Icons
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { AuthContext } from '../context/authContext';
 
 
 
-const handleLogout = () => {
-  alert('logout')
-}
+const Navbar = () => {
+  const {isLogin,setIsLogin} = useContext(AuthContext)
 
-const Navbar = ({isLoggedIn}) => {
+  const handleLogout = () => {
+    setIsLogin(false);
+    localStorage.clear();
+  }
+
 
   return (
     <AppBar position="static">
@@ -26,7 +30,7 @@ const Navbar = ({isLoggedIn}) => {
             <ShoppingCartIcon />
           </IconButton>
         </Tooltip>
-        {isLoggedIn ? (
+        {isLogin ? (
           <Tooltip title="Logout">
             <IconButton color="inherit" onClick={handleLogout} sx={{ marginLeft: 2 }}>
               <LogoutIcon />
@@ -38,7 +42,6 @@ const Navbar = ({isLoggedIn}) => {
             <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
           </Typography>
         )}
-        {/* Add login and register buttons */}
       </Toolbar>
     </AppBar>
   );

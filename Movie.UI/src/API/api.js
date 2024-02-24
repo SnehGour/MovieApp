@@ -9,20 +9,32 @@ const api = axios.create({
 });
 
 // Function to authenticate user
+
 export const login = (email, password) => {
     return api.post('/api/Account/login', { email, password },{
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
       }
     });
   };
   
+  // Function to register user
+
+export const register = (username,email, password) => {
+  return api.post('/api/Account/register', {username, email, password },{
+    headers:{
+      'Content-Type':'application/json'
+    }
+  });
+};
+
 
 // Function to fetch all movies
-export const getMovies = () => {
+export const getMovies = (token) => {
   return api.get('/api/movie/all-movies',{
     headers:{
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`
     }
   });
 };
