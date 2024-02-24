@@ -1,24 +1,33 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Movie.API.Models.Dtos;
+using Movie.API.Services.IServices;
 
 namespace Movie.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class MovieController : ControllerBase
     {
-        public MovieController()
+        private readonly IMovieService _movieService;
+        private readonly IMapper _mapper;
+
+        public MovieController(IMovieService movieService,
+            IMapper mapper)
         {
-            
+            _mapper = mapper;
+            _movieService = movieService;
         }
 
         [HttpGet]
-        [Route("Get")]
-        public string Get()
+        [Route("all-movies")]
+        public async Task<List<MovieDto>> GetAllMovies()
         {
-            return "Main Hu Atal";
+            var movieList = await _movieService.GetAllMoviesAsync();
+            var movieListDto = _mapper.Map<List<MovieDto>>(movieList);
+            return movieListDto;
         }
     }
 }

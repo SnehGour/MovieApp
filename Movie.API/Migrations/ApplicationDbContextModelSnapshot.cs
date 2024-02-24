@@ -45,22 +45,40 @@ namespace Movie.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Director")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("Plot")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Poster")
                         .HasColumnType("TEXT");
 
                     b.Property<float>("Price")
                         .HasColumnType("REAL");
 
-                    b.Property<uint>("UpVote")
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Year")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Director = "Christopher Nolan",
+                            Plot = "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+                            Poster = "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+                            Price = 100f,
+                            Title = "The Dark Knight",
+                            Year = 2008
+                        });
                 });
 #pragma warning restore 612, 618
         }

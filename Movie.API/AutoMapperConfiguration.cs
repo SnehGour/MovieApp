@@ -11,6 +11,7 @@ namespace Movie.API
             var mapper = new MapperConfiguration(config =>
             {
                 config.CreateMap<LoginRequest,LoginRequestDto>().ReverseMap();
+                config.CreateMap<MovieDto,Movie.API.Models.Movie>().ReverseMap();
             });
 
             return mapper;

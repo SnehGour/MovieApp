@@ -13,7 +13,6 @@ using AutoMapper;
 using Movie.API;
 using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
-var apiCorsPolicy = "APICorsPolicy";
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -39,6 +38,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=movieDb.db");
 });
 
+// CORS
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(builder.Configuration["cors"], options =>
+    {
+        options.AllowAnyHeader()
+        .AllowAnyOrigin();
+    });
+});
+
 
 // Authentication for client
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -55,20 +65,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-// CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: apiCorsPolicy,
-                      builder =>
-                      {
-                          builder.WithOrigins("http://localhost:5120", "https://localhost:7040")
-                            .AllowAnyHeader()
-                            .AllowAnyMethod()
-                            .AllowCredentials();
-                          //.WithMethods("OPTIONS", "GET");
-                      });
-});
-
 builder.Services.AddAuthorization();
 // AutoMapper
 IMapper mapper = AutoMapperConfiguration.RegsiterMaps().CreateMapper();
@@ -79,6 +75,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IJwtTokenGeneratorService, JwtTokenGeneratorService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IPasswordHasher,PasswordHasher>();
+builder.Services.AddScoped<IMovieService, MovieService>();
 
 var app = builder.Build();
 
@@ -90,6 +87,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(builder.Configuration["cors"]);
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
