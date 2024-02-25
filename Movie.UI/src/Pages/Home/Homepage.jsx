@@ -31,7 +31,7 @@ const HomePage = () => {
     }
     return (
         <>
-            <Navbar isLogin={isLogin}/>
+            <Navbar/>
             <MovieList movies={movieList}/> 
         </>);
 

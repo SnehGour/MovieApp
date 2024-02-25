@@ -6,14 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Router } from 'react-router-dom'
 import { MovieProvider } from './context/movieContext'
 import { AuthProvider } from './context/authContext'
+import { CartProvider } from './context/cartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <AuthProvider>
-            <MovieProvider>
-                <App />
-            </MovieProvider>
+            <CartProvider>
+                <MovieProvider>
+                    <App />
+                </MovieProvider>
+            </CartProvider>
         </AuthProvider>
     </BrowserRouter>
 );

@@ -11,19 +11,19 @@ const api = axios.create({
 // Function to authenticate user
 
 export const login = (email, password) => {
-    return api.post('/api/Account/login', { email, password },{
-      headers:{
-        'Content-Type':'application/json',
-      }
-    });
-  };
-  
-  // Function to register user
+  return api.post('/api/Account/login', { email, password }, {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+};
 
-export const register = (username,email, password) => {
-  return api.post('/api/Account/register', {username, email, password },{
-    headers:{
-      'Content-Type':'application/json'
+// Function to register user
+
+export const register = (username, email, password) => {
+  return api.post('/api/Account/register', { username, email, password }, {
+    headers: {
+      'Content-Type': 'application/json'
     }
   });
 };
@@ -31,17 +31,22 @@ export const register = (username,email, password) => {
 
 // Function to fetch all movies
 export const getMovies = (token) => {
-  return api.get('/api/movie/all-movies',{
-    headers:{
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${token}`
+  return api.get('/api/movie/all-movies', {
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
     }
   });
 };
 
 // Function to fetch a single movie by ID
-export const getMovieById = (id) => {
-  return api.get(`/movies/${id}`);
+export const getMovieById = (id, token) => {
+  return api.get(`/api/movie/movie-by-id/${id}`, {
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  });
 };
 
 // Function to search for movies by a query string

@@ -8,6 +8,7 @@ import MovieDetailPage from './Pages/Movie/MovieDetailPage';
 import HomePage from './Pages/Home/Homepage';
 import LoginPage from './Pages/Login/LoginPage';
 import RegisterPage from './Pages/Register/RegisterPage';
+import CartPage from './components/Cart/cart';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/movie/:movieId" element={<MovieDetailPage/>} />
         <Route path="/login" element={<LoginPage  />} />
         <Route path="/register" element={<RegisterPage  />} />
+        <Route path="/cart" element={<CartPage  />} />
       </Routes>
   );
 }

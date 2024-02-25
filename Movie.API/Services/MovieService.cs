@@ -15,5 +15,11 @@ namespace Movie.API.Services
         {
             return await _context.Movies.ToListAsync();
         }
+
+        public async Task<Movie.API.Models.Movie> GetMovieByIdAsync(int id)
+        {
+            var movie = await _context.Movies.FirstOrDefaultAsync(m=>m.Id == id);
+            return movie;
+        }
     }
 }
