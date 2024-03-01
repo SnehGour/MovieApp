@@ -12,6 +12,7 @@ using Movie.API.Services;
 using AutoMapper;
 using Movie.API;
 using Microsoft.OpenApi.Models;
+using Razorpay.Api;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
@@ -70,12 +71,18 @@ builder.Services.AddAuthorization();
 IMapper mapper = AutoMapperConfiguration.RegsiterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddTransient<IHttpContextAccessor,HttpContextAccessor>();
+
+// RazorPay payment Gateway
+builder.Services.AddScoped<RazorpayClient>(x => new RazorpayClient(builder.Configuration["Razorpay:Key"], builder.Configuration["Razorpay:Secret"]));
 
 // Services
 builder.Services.AddScoped<IJwtTokenGeneratorService, JwtTokenGeneratorService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IPasswordHasher,PasswordHasher>();
 builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IPaymentGateway, PaymentGateway>();
 
 var app = builder.Build();
 

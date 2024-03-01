@@ -26,6 +26,7 @@ namespace Movie.API.Data
                 }
                 );
         }
+        public DbSet<Movie.API.Models.MyOrders> MyrOrders { get; set; }
         public DbSet<Movie.API.Models.Movie> Movies { get; set; }
         public DbSet<Movie.API.Models.AppUser> AppUsers { get; set; }
     }

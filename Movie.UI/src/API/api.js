@@ -2,8 +2,8 @@
 
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5120';
-
+//const BASE_URL = 'http://localhost:5120';
+const BASE_URL = "https://localhost:7040";
 const api = axios.create({
   baseURL: BASE_URL,
 });
@@ -64,4 +64,18 @@ export const getMoviesByGenre = (genreId) => {
   return api.get(`/genres/${genreId}/movies`);
 };
 
-// Add more API functions as needed
+// payment API
+export const makepayment=(data)=>{
+  return api.post(`/api/Payment/Process-order`, data);
+}
+
+export const confirmPayment=(paymentId,orderId,email)=>{
+  console.log('before confirm payment',paymentId,orderId,email)
+  return api.post(`/api/Payment/Complete-order`, {paymentId,orderId,email});
+}
+
+
+// Orders
+export const getMyOrders=(email)=>{
+  return api.get(`/api/Order/get`,email);
+}

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UKLfsgS/dsGB9uy8mE0Bo322AYOiE6VozUAukisW/0gxaFY2NrH54/4z1L4q78x6a3xFBDAiMzBycGO8txEvyg==",
+  "dgSpecHash": "YJpSINEj85y1Qb3FMlHdOxP3IVtr1ol9i2qDYu2NKM5y7VE9RLQLDwY78igsHOhD3Gp7a0xGUYDnX1xF8onz1A==",
   "success": true,
   "projectFilePath": "D:\\Learning\\FrontEnd\\React\\MovieApp\\MovieApp\\Movie.API\\Movie.API.csproj",
   "expectedPackageFiles": [
@@ -46,6 +46,8 @@
     "C:\\Users\\sneh.gour\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.1.2\\microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
     "C:\\Users\\sneh.gour\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\sneh.gour\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\sneh.gour\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\sneh.gour\\.nuget\\packages\\razorpay.core\\1.0.2\\razorpay.core.1.0.2.nupkg.sha512",
     "C:\\Users\\sneh.gour\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\sneh.gour\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
     "C:\\Users\\sneh.gour\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",

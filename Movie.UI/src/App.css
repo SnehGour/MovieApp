@@ -40,3 +40,14 @@
 .movie-detail{
   background-color: black;
 }
+
+.home{
+  background-image: url('/public/movies-wallpaper.jpg'); /* Replace 'path/to/your/image.jpg' with the path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default padding */
+}

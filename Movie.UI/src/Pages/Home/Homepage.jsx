@@ -30,10 +30,10 @@ const HomePage = () => {
       return <Navigate to="/login"/>
     }
     return (
-        <>
-            <Navbar/>
+        <div className="home">
+            <Navbar isLogin={isLogin}/>
             <MovieList movies={movieList}/> 
-        </>);
+        </div>);
 
 }
 

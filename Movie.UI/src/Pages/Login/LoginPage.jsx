@@ -25,12 +25,18 @@ const LoginPage = () => {
     // Add login logic here
 
     login(email, password).then(response => {
-      console.log('response', response)
+      
+      console.log('response', response.data.result)
       if (response.data.isSuccess) {
         auth.setIsLogin(true);
+        var currentUser ={
+          username:response.data.result.username,
+          email:response.data.result.email,
+        }
+        auth.setUser(currentUser);
         const token = response.data.result.token;
         localStorage.setItem('token', token);
-
+        console.log('aaaaaaaaaaaa',auth);
       }
     });
   };

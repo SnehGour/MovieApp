@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.Data;
+using Movie.API.Models;
 using Movie.API.Models.Dtos;
 
 namespace Movie.API.Services.IServices
@@ -7,5 +8,6 @@ namespace Movie.API.Services.IServices
     {
         Task<LoginResponseDto> LoginAsync(LoginRequestDto loginRequestDto);
         Task<bool> RegisterAsync(RegisterRequestDto registerRequestDto);
+        Task<AppUser> GetUserInfoByEmailAsync(string email);
     }
 }

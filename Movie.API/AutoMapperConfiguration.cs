@@ -12,6 +12,7 @@ namespace Movie.API
             {
                 config.CreateMap<LoginRequest,LoginRequestDto>().ReverseMap();
                 config.CreateMap<MovieDto,Movie.API.Models.Movie>().ReverseMap();
+                config.CreateMap<MyOrderDto,Movie.API.Models.MyOrders>().ReverseMap();
             });
 
             return mapper;
