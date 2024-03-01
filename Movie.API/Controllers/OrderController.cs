@@ -42,7 +42,7 @@ namespace Movie.API.Controllers
         {
             var decodedDto = HttpUtility.UrlDecode(myOrderDto);
             var myOrderDtoObject = JsonConvert.DeserializeObject<MyOrderDto>(decodedDto);
-            if (myOrderDtoObject.AppUserId > 0 && myOrderDtoObject.PaymentId != null && myOrderDtoObject.RazorpayOrderId != null)
+            if (myOrderDtoObject.Email != null && myOrderDtoObject.PaymentId != null && myOrderDtoObject.RazorpayOrderId != null)
             {
                 MyOrders myOrder = _mapper.Map<MyOrders>(myOrderDtoObject);
                 var isCreated = await _orderService.CreateAsync(myOrder);

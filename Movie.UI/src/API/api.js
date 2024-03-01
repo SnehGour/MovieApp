@@ -77,5 +77,5 @@ export const confirmPayment=(paymentId,orderId,email)=>{
 
 // Orders
 export const getMyOrders=(email)=>{
-  return api.get(`/api/Order/get`,email);
+  return api.get(`/api/Order/get?email=${email}`);
 }

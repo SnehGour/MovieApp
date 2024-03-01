@@ -39,11 +39,10 @@ namespace Movie.API.Controllers
             string PaymentMessage =  _paymentGateway.CompleteOrderProcess(confirmPaymentDto);
             if (PaymentMessage == "captured" && confirmPaymentDto.Email !=null)
             {
-                AppUser user = await _accountService.GetUserInfoByEmailAsync(confirmPaymentDto.Email);
 
                 MyOrderDto myOrderDto = new MyOrderDto()
                 {
-                    AppUserId = user.Id,
+                    Email = confirmPaymentDto.Email,
                     PaymentId = confirmPaymentDto.PaymentId,
                     RazorpayOrderId = confirmPaymentDto.OrderId,
                 };

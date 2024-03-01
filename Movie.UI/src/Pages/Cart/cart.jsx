@@ -15,7 +15,6 @@ const CartPage = () => {
     const navigate = useNavigate();
 
 
-
     const handleBackToHome = () =>{
         navigate("/");
     }
@@ -40,6 +39,9 @@ const CartPage = () => {
                 console.log('payment', opt, response)
                 confirmPayment(opt.razorpay_payment_id, response?.data.orderId,user.email)
                     .then(res => {
+                        if(res.status == 200){
+                            setCart([]);
+                        }
                         console.log('Before redirect',res);
                         navigate(`/my-orders`);
                     })
@@ -58,6 +60,7 @@ const CartPage = () => {
     };
 
     useEffect(() => {
+        console.log('cartttttttttt',cart);
         // Load Razorpay checkout script
         const script = document.createElement('script');
         script.src = 'https://checkout.razorpay.com/v1/checkout.js';
