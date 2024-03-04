@@ -83,6 +83,7 @@ builder.Services.AddScoped<IPasswordHasher,PasswordHasher>();
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IPaymentGateway, PaymentGateway>();
+builder.Services.AddScoped<IMovieSteamProvider, MovieSteamProviderService>();
 
 var app = builder.Build();
 

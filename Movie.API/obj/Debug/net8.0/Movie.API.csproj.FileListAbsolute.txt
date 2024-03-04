@@ -143,3 +143,8 @@ D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\Microsof
 D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\RazorPay Core.dll
+D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\Azure.Core.dll
+D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\Azure.Storage.Blobs.dll
+D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\Azure.Storage.Common.dll
+D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\System.IO.Hashing.dll
+D:\Learning\FrontEnd\React\MovieApp\MovieApp\Movie.API\bin\Debug\net8.0\System.Memory.Data.dll

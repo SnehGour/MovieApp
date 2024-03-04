@@ -14,13 +14,16 @@ namespace Movie.API.Controllers
     {
         private readonly IMovieService _movieService;
         private readonly IMapper _mapper;
+        private readonly IMovieSteamProvider _movieStreamService;
         private Response _response;
         public MovieController(IMovieService movieService,
-            IMapper mapper)
+            IMapper mapper,
+            IMovieSteamProvider movieSteamProvider)
         {
             _response = new Response();
             _mapper = mapper;
             _movieService = movieService;
+            _movieStreamService = movieSteamProvider;
         }
 
         [HttpGet]
@@ -53,6 +56,17 @@ namespace Movie.API.Controllers
             }
             _response.Message = "Invalid Id or movie not found";
             return _response;
+        }
+
+        [HttpGet]
+        [Route("stream")]
+        public IActionResult Stream()
+        {
+            var movieUrl = _movieStreamService.GetMovieUrl();
+            return new JsonResult(new
+            {
+                movieUrl
+            }); 
         }
     }
 }
